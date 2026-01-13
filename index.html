@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crazzy Beamers | 7n</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Paleta de Cores Roxa */
+            --primary-glow: #a855f7;       /* Roxo claro brilhante */
+            --primary-dark: #581c87;       /* Roxo escuro */
+            --bg-color: #050505;           /* Preto quase absoluto */
+            --card-bg: rgba(20, 10, 30, 0.6); /* Fundo dos cartões translúcido */
+            --text-color: #ffffff;
+            --success-color: #00ff41;      /* Verde hacker para status */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 50% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+                linear-gradient(to bottom, #000 0%, #11051b 100%);
+        }
+
+        /* Efeito de Fundo Abstrato (Círculos/Portal) */
+        .background-fx {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 600px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 70%);
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        /* Círculo decorativo simulando a imagem original */
+        .orb {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, transparent 30%, var(--primary-dark) 100%);
+            box-shadow: 0 0 80px var(--primary-glow);
+            opacity: 0.6;
+            animation: pulse 4s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 50px var(--primary-dark); transform: translateX(-50%) scale(1); }
+            100% { box-shadow: 0 0 90px var(--primary-glow); transform: translateX(-50%) scale(1.05); }
+        }
+
+        /* Header / Nav */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .brand i { color: var(--text-color); }
+        .brand span { color: var(--primary-glow); }
+
+        .dev-credit {
+            font-size: 0.75rem;
+            color: #888;
+        }
+        .dev-credit span {
+            color: var(--primary-glow); /* Nome 7n em roxo */
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 600px; /* Tamanho mobile focado */
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Título Principal */
+        .hero-title {
+            font-family: 'Courier Prime', monospace;
+            font-size: 2.5rem;
+            color: #ff2a2a; /* Fallback */
+            color: transparent;
+            background: linear-gradient(to bottom, #d8b4fe, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+            margin-top: 100px;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+
+        /* Status Pills */
+        .status-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .status-pill {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #333;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #00ff41; /* Texto verde matrix */
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.1);
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00ff41;
+            border-radius: 50%;
+            box-shadow: 0 0 5px #00ff41;
+        }
+
+        /* Botão Discord */
+        .discord-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(90deg, #4c1d95, #7c3aed);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: bold;
+            font-family: 'Courier Prime', monospace;
+            border: 1px solid var(--primary-glow);
+            box-shadow: 0 0 15px rgba(124, 58, 237, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .discord-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 25px rgba(124, 58, 237, 0.6);
+        }
+
+        /* Divisor Painel */
+        .panel-divider {
+            margin: 40px 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d8b4fe;
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .panel-divider::before, .panel-divider::after {
+            content: '';
+            height: 1px;
+            width: 50px;
+            background: var(--primary-glow);
+            margin: 0 15px;
+            box-shadow: 0 0 5px var(--primary-glow);
+        }
+
+        /* Grid de Cards */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding-bottom: 50px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            text-align: left;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--primary-glow);
+            background: rgba(168, 85, 247, 0.1);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+        }
+
+        /* Ícone dentro do card */
+        .card-icon-box {
+            width: 40px;
+            height: 40px;
+            background: rgba(88, 28, 135, 0.5);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .card-icon-box i {
+            color: #d8b4fe;
+            font-size: 1.2rem;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .card p {
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+
+        .arrow-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-glow);
+            opacity: 0.5;
+            transition: 0.3s;
+        }
+
+        .card:hover .arrow-icon {
+            opacity: 1;
+            right: 15px;
+        }
+
+        /* Decoração de fundo nos cards (linhas sutis) */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(168, 85, 247, 0.03) 10px,
+                rgba(168, 85, 247, 0.03) 20px
+            );
+            pointer-events: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="background-fx">
+        <div class="orb"></div>
+    </div>
+
+    <header>
+        <div class="brand">
+            <i class="fas fa-skull"></i>
+            <span>CRAZZY BEAMERS</span>
+        </div>
+        <div class="dev-credit">
+            Desenvolvido por <span>7n</span>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <h1 class="hero-title">CRAZZY BEAMERS</h1>
+
+        <div style="display: flex; justify-content: center; gap: 150px; margin-top: -10px; margin-bottom: 20px; opacity: 0.5;">
+            <i class="fas fa-skull" style="color: #aaa;"></i>
+            <i class="fas fa-skull" style="color: #aaa;"></i>
+        </div>
+
+        <div class="status-container">
+            <div class="status-pill">
+                <span class="dot"></span> Sistema Ativo
+            </div>
+            <div class="status-pill">
+                <span class="dot"></span> Servidor Online
+            </div>
+        </div>
+
+        <a href="#" class="discord-btn">
+            <i class="fa-brands fa-discord"></i> Entrar no Discord
+        </a>
+
+        <div class="panel-divider">
+            Painel Principal
+        </div>
+
+        <div class="card-grid">
+            
+            <div class="card">
+                <div class="card-icon-box">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h3>Gerador</h3>
+                <p>Ferramentas de geração</p>
+                <i class="fas fa-arrow-right arrow-icon"></i>
+            </div>
+
+            <div class="card">
+                <div class="card-icon-box">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Métodos</h3>
+                <p>Métodos avançados</p>
+                <i class="fas fa-arrow-right arrow-icon"></i>
+            </div>
+
+            <div class="card">
+                <div class="card-icon-box">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h3>Tutorial</h3>
+                <p>Guias completos</p>
+                <i class="fas fa-arrow-right arrow-icon"></i>
+            </div>
+
+            <div class="card">
+                <div class="card-icon-box">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <h3>Bypass</h3>
+                <p>Ferramentas de bypass</p>
+                <i class="fas fa-arrow-right arrow-icon"></i>
+            </div>
+
+            <div class="card">
+                <div class="card-icon-box">
+                    <i class="fas fa-question"></i>
+                </div>
+                <h3>FAQ</h3>
+                <p>Perguntas Frequentes - Tire suas dúvidas</p>
+                <i class="fas fa-arrow-right arrow-icon"></i>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
