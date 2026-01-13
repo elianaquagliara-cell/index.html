@@ -10,12 +10,12 @@
     <style>
         :root {
             /* Paleta de Cores Roxa */
-            --primary-glow: #a855f7;       /* Roxo claro brilhante */
-            --primary-dark: #581c87;       /* Roxo escuro */
-            --bg-color: #050505;           /* Preto quase absoluto */
-            --card-bg: rgba(20, 10, 30, 0.6); /* Fundo dos cartões translúcido */
+            --primary-glow: #a855f7;       
+            --primary-dark: #581c87;       
+            --bg-color: #050505;           
+            --card-bg: rgba(20, 10, 30, 0.6); 
             --text-color: #ffffff;
-            --success-color: #00ff41;      /* Verde hacker para status */
+            --success-color: #00ff41;      
         }
 
         * {
@@ -35,7 +35,6 @@
                 linear-gradient(to bottom, #000 0%, #11051b 100%);
         }
 
-        /* Efeito de Fundo Abstrato (Círculos/Portal) */
         .background-fx {
             position: absolute;
             top: 0;
@@ -48,7 +47,6 @@
             overflow: hidden;
         }
         
-        /* Círculo decorativo simulando a imagem original */
         .orb {
             position: absolute;
             top: 100px;
@@ -68,7 +66,6 @@
             100% { box-shadow: 0 0 90px var(--primary-glow); transform: translateX(-50%) scale(1.05); }
         }
 
-        /* Header / Nav */
         header {
             display: flex;
             justify-content: space-between;
@@ -91,7 +88,6 @@
             letter-spacing: 1px;
         }
 
-        .brand i { color: var(--text-color); }
         .brand span { color: var(--primary-glow); }
 
         .dev-credit {
@@ -99,24 +95,21 @@
             color: #888;
         }
         .dev-credit span {
-            color: var(--primary-glow); /* Nome 7n em roxo */
+            color: var(--primary-glow);
             font-weight: bold;
             text-transform: uppercase;
         }
 
-        /* Container Principal */
         .container {
-            max-width: 600px; /* Tamanho mobile focado */
+            max-width: 600px; 
             margin: 0 auto;
             padding: 20px;
             text-align: center;
         }
 
-        /* Título Principal */
         .hero-title {
             font-family: 'Courier Prime', monospace;
             font-size: 2.5rem;
-            color: #ff2a2a; /* Fallback */
             color: transparent;
             background: linear-gradient(to bottom, #d8b4fe, #a855f7);
             -webkit-background-clip: text;
@@ -128,7 +121,6 @@
             line-height: 1;
         }
 
-        /* Status Pills */
         .status-container {
             display: flex;
             justify-content: center;
@@ -143,7 +135,7 @@
             padding: 8px 16px;
             border-radius: 20px;
             font-size: 0.8rem;
-            color: #00ff41; /* Texto verde matrix */
+            color: #00ff41; 
             display: flex;
             align-items: center;
             gap: 8px;
@@ -158,7 +150,6 @@
             box-shadow: 0 0 5px #00ff41;
         }
 
-        /* Botão Discord */
         .discord-btn {
             display: flex;
             align-items: center;
@@ -182,7 +173,6 @@
             box-shadow: 0 0 25px rgba(124, 58, 237, 0.6);
         }
 
-        /* Divisor Painel */
         .panel-divider {
             margin: 40px 0;
             position: relative;
@@ -205,7 +195,6 @@
             box-shadow: 0 0 5px var(--primary-glow);
         }
 
-        /* Grid de Cards */
         .card-grid {
             display: flex;
             flex-direction: column;
@@ -213,6 +202,7 @@
             padding-bottom: 50px;
         }
 
+        /* Estilo para garantir que o link se comporte como o card anterior */
         .card {
             background: var(--card-bg);
             border: 1px solid rgba(168, 85, 247, 0.3);
@@ -223,7 +213,8 @@
             position: relative;
             text-align: left;
             transition: all 0.3s ease;
-            cursor: pointer;
+            text-decoration: none; /* Remove o sublinhado do link */
+            color: inherit;
             overflow: hidden;
         }
 
@@ -231,9 +222,9 @@
             border-color: var(--primary-glow);
             background: rgba(168, 85, 247, 0.1);
             box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+            transform: translateY(-2px);
         }
 
-        /* Ícone dentro do card */
         .card-icon-box {
             width: 40px;
             height: 40px;
@@ -277,7 +268,6 @@
             right: 15px;
         }
 
-        /* Decoração de fundo nos cards (linhas sutis) */
         .card::before {
             content: '';
             position: absolute;
@@ -331,7 +321,7 @@
             </div>
         </div>
 
-        <a href="#" class="discord-btn">
+        <a href="https://discord.gg/bACNRmUW8q" target="_blank" class="discord-btn">
             <i class="fa-brands fa-discord"></i> Entrar no Discord
         </a>
 
@@ -341,14 +331,14 @@
 
         <div class="card-grid">
             
-            <div class="card">
+            <a href="https://abrir.link/rHflb" target="_blank" class="card">
                 <div class="card-icon-box">
                     <i class="fas fa-crown"></i>
                 </div>
                 <h3>Gerador</h3>
                 <p>Ferramentas de geração</p>
                 <i class="fas fa-arrow-right arrow-icon"></i>
-            </div>
+            </a>
 
             <div class="card">
                 <div class="card-icon-box">
@@ -359,23 +349,23 @@
                 <i class="fas fa-arrow-right arrow-icon"></i>
             </div>
 
-            <div class="card">
+            <a href="https://discord.gg/bACNRmUW8q" target="_blank" class="card">
                 <div class="card-icon-box">
                     <i class="fas fa-book-open"></i>
                 </div>
                 <h3>Tutorial</h3>
                 <p>Guias completos</p>
                 <i class="fas fa-arrow-right arrow-icon"></i>
-            </div>
+            </a>
 
-            <div class="card">
+            <a href="https://abrir.link/zWqKA" target="_blank" class="card">
                 <div class="card-icon-box">
                     <i class="fas fa-shield-halved"></i>
                 </div>
                 <h3>Bypass</h3>
                 <p>Ferramentas de bypass</p>
                 <i class="fas fa-arrow-right arrow-icon"></i>
-            </div>
+            </a>
 
             <div class="card">
                 <div class="card-icon-box">
