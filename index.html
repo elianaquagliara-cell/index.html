@@ -260,7 +260,7 @@
             line-height: 1.4;
         }
 
-        .method-item {
+        .item-list {
             background: rgba(168, 85, 247, 0.2);
             padding: 12px;
             border-radius: 8px;
@@ -272,7 +272,7 @@
             transition: 0.3s;
         }
 
-        .method-item:hover {
+        .item-list:hover {
             background: var(--primary-glow);
             transform: scale(1.02);
         }
@@ -364,41 +364,53 @@
 
         <div class="card-grid">
             
-            <a href="https://abrir.link/rHflb" target="_blank" class="card">
+            <div class="card" onclick="toggleMenu('generator-list', 'generator-arrow')">
                 <div class="card-icon-box">
                     <i class="fas fa-crown"></i>
                 </div>
                 <h3>Gerador</h3>
-                <p>Ferramentas de geração</p>
-                <i class="fas fa-arrow-right arrow-icon"></i>
-            </a>
-
-            <div class="card" onclick="toggleMenu('methods-list', 'method-arrow')">
-                <div class="card-icon-box">
-                    <i class="fas fa-code"></i>
-                </div>
-                <h3>Métodos</h3>
-                <p>Métodos avançados (Clique para ver)</p>
-                <i class="fas fa-chevron-down arrow-icon" id="method-arrow"></i>
+                <p>Ferramentas de geração (Clique para ver)</p>
+                <i class="fas fa-chevron-down arrow-icon" id="generator-arrow"></i>
                 
-                <div class="expand-options" id="methods-list">
-                    <a href="https://youtube.com/shorts/x-RnBGDiPRA?si=vhwAtJAvCYiM2adn" target="_blank" class="method-item">
-                         <i class="fas fa-link"></i> Método Link Fake
+                <div class="expand-options" id="generator-list">
+                    <a href="https://abrir.link/rHflb" target="_blank" class="item-list">
+                         <i class="fas fa-bolt"></i> Splunk X
                     </a>
-                    <a href="https://youtube.com/shorts/C0ql9CegkJ4?si=7EatqWsAFNBMqb-m" target="_blank" class="method-item">
-                         <i class="fas fa-cookie-bite"></i> Método Cookie
+                    <a href="https://abrir.link/UbQtp" target="_blank" class="item-list">
+                         <i class="fas fa-ghost"></i> Immortal X
+                    </a>
+                    <a href="https://abrir.link/cTNQI" target="_blank" class="item-list">
+                         <i class="fas fa-fire"></i> Shofick X
                     </a>
                 </div>
             </div>
 
-            <a href="https://discord.gg/bACNRmUW8q" target="_blank" class="card">
+            <a href="https://discord.gg/jrNaSJK3pp" target="_blank" class="card">
+                <div class="card-icon-box">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Métodos</h3>
+                <p>Métodos avançados no Discord</p>
+                <i class="fas fa-arrow-right arrow-icon"></i>
+            </a>
+
+            <div class="card" onclick="toggleMenu('tutorial-list', 'tutorial-arrow')">
                 <div class="card-icon-box">
                     <i class="fas fa-book-open"></i>
                 </div>
                 <h3>Tutorial</h3>
-                <p>Guias completos</p>
-                <i class="fas fa-arrow-right arrow-icon"></i>
-            </a>
+                <p>Guias completos (Clique para ver)</p>
+                <i class="fas fa-chevron-down arrow-icon" id="tutorial-arrow"></i>
+                
+                <div class="expand-options" id="tutorial-list">
+                    <a href="https://youtube.com/shorts/x-RnBGDiPRA?si=vhwAtJAvCYiM2adn" target="_blank" class="item-list">
+                         <i class="fas fa-link"></i> Método Link Fake
+                    </a>
+                    <a href="https://youtube.com/shorts/C0ql9CegkJ4?si=7EatqWsAFNBMqb-m" target="_blank" class="item-list">
+                         <i class="fas fa-cookie-bite"></i> Método Cookie
+                    </a>
+                </div>
+            </div>
 
             <a href="https://abrir.link/zWqKA" target="_blank" class="card">
                 <div class="card-icon-box">
